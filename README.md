@@ -1,2 +1,5 @@
 # startup
-Startup command for private mac
+
+```bash
+go get -u github.com/yagihash/startup
+```

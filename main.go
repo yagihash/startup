@@ -1,13 +1,14 @@
 package main
 
-import "github.com/yagihash/startup/command"
+import c "github.com/yagihash/startup/command"
 
 func main() {
-	commands := []*command.Command{
-		command.NewCommand("ssh-add", []string{"-K"}),
+	commands := []*c.Command{
+		c.NewCommand("ssh-add", []string{"-K"}),
+		c.NewCommand("git", []string{"pull"}, c.OptionWorkingDir("/Users/yagihash/dotfiles")),
 	}
 
-	for _, c := range commands {
-		c.Run()
+	for _, cmd := range commands {
+		cmd.Run()
 	}
 }

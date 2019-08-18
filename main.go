@@ -1,30 +1,13 @@
 package main
 
-import (
-	"fmt"
-	"os/exec"
-
-	"github.com/martinlindhe/notify"
-)
-
-const (
-	AppName    = "Start up"
-	TitleError = "Error"
-	TitleDone  = "Done"
-)
+import "github.com/yagihash/startup/command"
 
 func main() {
-	e("ssh-add", "-K")
-}
+	commands := []*command.Command{
+		command.NewCommand("ssh-add", []string{"-K"}),
+	}
 
-func e(cmd string, option ...string) {
-	err := exec.Command(cmd, option...).Run()
-	if err != nil {
-		notify.Notify(
-			AppName,
-			TitleError,
-			fmt.Sprintf("%v", err),
-			"",
-		)
+	for _, c := range commands {
+		c.Run()
 	}
 }

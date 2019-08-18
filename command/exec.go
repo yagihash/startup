@@ -8,15 +8,19 @@ import (
 )
 
 const (
-	AppName    = "Start up"
+	// AppName is shown on notifications as application name
+	AppName = "Start up"
+
+	// TitleError is shown on notification as error title
 	TitleError = "Error"
-	TitleDone  = "Done"
 )
 
+// Command wraps exec.Cmd and has some command execution method with notification
 type Command struct {
 	Cmd *exec.Cmd
 }
 
+// NewCommand creates Command with given options
 func NewCommand(cmd string, cmdOption []string, execOption ...Option) *Command {
 	c := &Command{
 		Cmd: exec.Command(cmd, cmdOption...),
@@ -29,6 +33,7 @@ func NewCommand(cmd string, cmdOption []string, execOption ...Option) *Command {
 	return c
 }
 
+// Run executes command contained in Command and notify when it fails
 func (c *Command) Run() {
 	err := c.Cmd.Run()
 	if err != nil {

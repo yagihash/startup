@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"os/exec"
-	"strings"
 
 	"github.com/martinlindhe/notify"
 )
@@ -25,13 +24,6 @@ func e(cmd string, option ...string) {
 			AppName,
 			TitleError,
 			fmt.Sprintf("%v", err),
-			"",
-		)
-	} else {
-		notify.Notify(
-			AppName,
-			TitleDone,
-			fmt.Sprintf("%s %s", cmd, strings.Join(option, " ")),
 			"",
 		)
 	}

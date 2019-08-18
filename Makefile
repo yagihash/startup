@@ -8,6 +8,10 @@ download:
 run:
 	@ go run main.go
 
+.PHONY: build
+build:
+	@ go build -o startup main.go
+
 .PHONY: setup
 setup:
 	@ go get -u github.com/kyoh86/richgo

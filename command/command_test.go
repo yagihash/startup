@@ -6,7 +6,7 @@ import (
 	"testing"
 )
 
-func TestNewCommand(t *testing.T) {
+func TestNew(t *testing.T) {
 	t.Parallel()
 
 	cases := []struct {
@@ -45,7 +45,7 @@ func TestNewCommand(t *testing.T) {
 		t.Run(c.name, func(t *testing.T) {
 			var buffer bytes.Buffer
 			w := bufio.NewWriter(&buffer)
-			command := NewCommand(c.input.cmd, c.input.option, OptionStdout(w))
+			command := New(c.input.cmd, c.input.option, OptionStdout(w))
 			command.Run()
 
 			got := buffer.String()

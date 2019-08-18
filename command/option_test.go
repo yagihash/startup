@@ -21,7 +21,7 @@ func TestOptionWorkingDir(t *testing.T) {
 
 	for _, c := range cases {
 		t.Run(c.name, func(t *testing.T) {
-			command := NewCommand("echo", []string{},
+			command := New("echo", []string{},
 				OptionWorkingDir(c.input),
 			)
 			got := command.Cmd.Dir
@@ -39,7 +39,7 @@ func TestOptionStdout(t *testing.T) {
 	w := bufio.NewWriter(&buffer)
 
 	want := "TestOptionStdout"
-	command := NewCommand("echo", []string{"-n", want}, OptionStdout(w))
+	command := New("echo", []string{"-n", want}, OptionStdout(w))
 	command.Run()
 
 	got := buffer.String()
@@ -63,7 +63,7 @@ func TestOptionEnv(t *testing.T) {
 
 	for _, c := range cases {
 		t.Run(c.name, func(t *testing.T) {
-			command := NewCommand("echo", []string{}, OptionEnv(c.input))
+			command := New("echo", []string{}, OptionEnv(c.input))
 			got := command.Cmd.Env
 
 			sort.SliceStable(got, func(i, j int) bool { return got[i] < got[j] })

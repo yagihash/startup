@@ -21,7 +21,7 @@ type Command struct {
 }
 
 // NewCommand creates Command with given options
-func NewCommand(cmd string, cmdOption []string, execOption ...Option) *Command {
+func New(cmd string, cmdOption []string, execOption ...Option) *Command {
 	c := &Command{
 		Cmd: exec.Command(cmd, cmdOption...),
 	}

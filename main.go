@@ -8,8 +8,8 @@ import (
 
 func main() {
 	commands := []*c.Command{
-		c.NewCommand("ssh-add", []string{"-K"}),
-		c.NewCommand("git", []string{"pull"}, c.OptionWorkingDir(os.Getenv("HOME")+"/dotfiles")),
+		c.New("ssh-add", []string{"-K"}),
+		c.New("git", []string{"pull"}, c.OptionWorkingDir(os.Getenv("HOME")+"/dotfiles")),
 	}
 
 	for _, cmd := range commands {

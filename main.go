@@ -9,6 +9,7 @@ import (
 func main() {
 	commands := []*c.Command{
 		c.New("ssh-add", []string{"-K"}),
+		c.New("go", []string{"get", "-u", "github.com/yagihash/startup"}),
 		c.New("git", []string{"pull"}, c.OptionWorkingDir(os.Getenv("HOME")+"/dotfiles")),
 	}
 

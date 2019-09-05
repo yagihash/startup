@@ -1,3 +1,5 @@
+BIN := startup
+
 export GO111MODULE := on
 
 .PHONY: download
@@ -10,7 +12,7 @@ run:
 
 .PHONY: build
 build:
-	@ go build -o startup main.go
+	@ go build -o $(BIN) cmd/$(BIN)/main.go
 
 .PHONY: setup
 setup:

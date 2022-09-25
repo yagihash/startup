@@ -1,6 +1,6 @@
 module github.com/yagihash/startup
 
-go 1.12
+go 1.19
 
 require (
 	github.com/deckarep/gosx-notifier v0.0.0-20180201035817-e127226297fb // indirect
